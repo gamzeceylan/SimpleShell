@@ -199,3 +199,11 @@ void parseSpace(char* str, char** parsed)
 			i--;
 	}
 }
+int processString(char* str, char** parsed) //parçalanış stringleri builtin komutsa işler ve 0 return eder
+{					  // builtin komut değilse 1 return eder..
+        parseSpace(str, parsed);
+   	if(built_in_commands(parsed)){
+   		return 0;
+   	}
+   	return 1;
+}
