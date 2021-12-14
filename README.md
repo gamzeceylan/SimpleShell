@@ -23,7 +23,7 @@
  ### showpid(char** parsed) fonksiyonu 
 Arkaplanda çalışan proseslerin PID'lerini gösterir.
 
-### execution fonksiyonu
+### execution(char** parsed) fonksiyonu
 Fork işlemi ile yavru proses oluşturulur. Eğer yavru proses ise execvp ile gelen komut yavru prosesin üstüne yazılır. Eğer ebeveyn proses ise waitpid ile yavru prosesin sonlanmasını bekler.
 
 ### init_shell() fonksiyonu
