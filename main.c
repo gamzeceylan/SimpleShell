@@ -151,3 +151,37 @@ void execution(char** parsed){	//Fork ile yeni process oluşturuyor
 	}
 }
 
+int built_in_commands(char** parsed) //gelen builtin komutları çağırır
+{
+	int numOfCmds = 3, i, switchOwnArg = 0;
+	char* builtin_str[numOfCmds];
+	char* username;
+
+	builtin_str[0] = "exit";
+	builtin_str[1] = "cd";
+	builtin_str[2] = "showpid";
+
+	for (i = 0; i < numOfCmds ; i++) {
+		if (strcmp(parsed[0], builtin_str[i]) == 0) {
+			switchOwnArg = i + 1;
+			break;
+		}
+	}
+
+	switch (switchOwnArg) {
+	case 1:
+		printf("Exit\n");
+		exit(0);
+	case 2:
+		chdir(parsed[1]);
+		return 1;
+	case 3:
+		showpid();
+		return 1;
+	default:
+		break;
+	}
+
+	return 0;
+}
+
