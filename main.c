@@ -25,6 +25,53 @@ void parseSpace(char* str, char** parsed);
 int processString(char* str, char** parsed);
 void showpid();
 
+int main()
+{
+	while (1) {
+		init_shell();
+	}
+	return 0;
+}
+
+// Kabuğumuzu başlatıyoruz
+void init_shell()
+{
+	printf("\e[1;1H\e[2J"); // terminali temizler
+	int flag;
+	pid_t process_id;
+	char s[100];
+
+
+	while (1) {
+
+		printf("\33[0;34m"); // renk
+			// bulundugumuz dizini gösterir
+		printf("%s/", getcwd(s, 100));
+		printf(": sau> ");
+		printf("\33[0m"); // renk
+
+		char input[MAX_COMMAND], * parsedArgs[MAXLIST];
+		scanf(" %[^\n]", input);
+
+		if (strlen(input) > MAX_COMMAND) { // 80 karakterden fazla komut girilirse
+			fprintf(stderr, "Too long command. Max command character size is 80.\n");
+
+		}
+
+		else if (feof(stdin)) { // dosya sonu ve okunacak bir şey kalmadı
+			perror("Exiting shell ");
+			exit(0);
+		}
+
+		else {
+			flag = processString(input, parsedArgs);
+			if (flag == 1) {	//eğer flag 1 ise gelen komut builtin komut değildir bu yüzden executiona göndeririz
+				execution(parsedArgs);
+			}
+		}
+	}
+	printf("\n");
+}
 
 void showpid() //Arkaplanda çalışan proseslerin PID'lerini gösteriyor
 {
