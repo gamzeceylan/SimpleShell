@@ -32,6 +32,12 @@ Kabuğu başlatır ve prompt'urenkli olarak ekrana yazar ve eğer processString 
 ### main() fonksiyonu 
 init_shell() fonksiyonunu çağırır.
 
+### Program nasıl çalışır?
+Komut isteminde ödev klasörümüzün içinden "make" komutunu çalıştırdığımız zaman ödev istediğimiz şekilde çalışır.
+
+### Kullanılan Kaynaklar
+https://brennan.io/2015/01/16/write-a-shell-in-c/
+
 
 
  
