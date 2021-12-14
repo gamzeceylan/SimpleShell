@@ -185,3 +185,17 @@ int built_in_commands(char** parsed) //gelen builtin komutları çağırır
 	return 0;
 }
 
+// gelen stringi boşluk karakterine göre parçalara ayıran fonksiyon
+void parseSpace(char* str, char** parsed)
+{
+	int i;
+
+	for (i = 0; i < MAXLIST; i++) {
+		parsed[i] = strsep(&str, " ");
+
+		if (parsed[i] == NULL)
+			break;
+		if (strlen(parsed[i]) == 0)
+			i--;
+	}
+}
